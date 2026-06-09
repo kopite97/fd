@@ -1,6 +1,6 @@
 package com.kopite.fd.assessment.dto.response;
 
-import com.kopite.fd.assessment.application.GetAssessmentQuestionsResult;
+import com.kopite.fd.assessment.application.result.GetAssessmentQuestionsResult;
 import java.util.List;
 
 public record GetAssessmentQuestionsResponse(

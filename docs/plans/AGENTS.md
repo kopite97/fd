@@ -15,6 +15,28 @@ All implementation work should be associated with a Plan.
 
 ---
 
+## Plan Execution
+
+Once a Plan is approved, the agent may execute all tasks within the approved Plan scope without asking for approval after each task.
+
+The agent must stop and ask for approval only when:
+
+- Work falls outside the approved Plan scope
+- A new Decision is required
+- A conflict with an existing Decision or AGENTS.md rule is found
+- The implementation requires introducing a new dependency, framework, or architectural pattern
+
+Within the approved Plan scope, the agent should:
+
+1. Implement the planned work.
+2. Add required tests.
+3. Run required verification checks.
+4. Fix failures within scope.
+5. Update the Plan progress.
+6. Mark the Plan Completed only when all completion criteria are satisfied.
+
+---
+
 ## Plan Completion
 
 A Plan may be marked as Completed only after required lint/static checks and related tests have passed.
@@ -116,11 +138,12 @@ A Plan must use one of the following statuses:
 * Completed — Finished and accepted
 * Cancelled — No longer applicable
 
-Implementation may only begin after user approval.
-
-Approved and In Progress plans are considered active plans and may be selected for implementation work.
-
-Completed and Cancelled plans are historical records and should not be selected for new work.
+Rules:
+- Implementation may only begin after user approval.
+- When implementation begins, change Approved → In Progress.
+- When all Completion Criteria are satisfied, change In Progress → Completed.
+- Update docs/plans/README.md whenever Plan status changes.
+- Completed and Cancelled plans are historical records and should not be selected for new work.
 
 ---
 
@@ -171,6 +194,23 @@ Each Plan should contain:
 
 ---
 
+## Task Progress Updates
+
+When implementing work under an Approved Plan:
+
+- Update task checkboxes as work is completed.
+- Update the Progress Log when meaningful milestones are reached.
+- Keep Plan status synchronized with actual implementation progress.
+
+A separate user instruction is not required to update completed tasks.
+
+However:
+
+- Do not mark a task complete unless the implementation for that task exists.
+- Do not mark a Plan Completed until all Completion Criteria are satisfied.
+
+---
+
 ## Plan Types
 
 Available types:
@@ -179,3 +219,5 @@ Available types:
 * Fix
 * Refactor
 * Test
+
+

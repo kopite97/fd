@@ -28,12 +28,25 @@ com.kopite.fd
 Each domain may use the following structure when required:
 
 ```text
-domain-name
 ├── controller
+├── dto
+│   ├── request
+│   └── response
 ├── application
+│   ├── command
+│   ├── query
+│   ├── service
+│   └── result
 ├── domain
-├── infrastructure
-└── dto
+│   ├── model
+│   ├── repository
+│   ├── type
+│   └── service
+└── infrastructure
+    ├── entity
+    ├── repository
+    ├── adapter
+    └── mapper
 ```
 
 Not all packages are required for every domain.
@@ -60,11 +73,12 @@ Examples:
 
 Use-case orchestration.
 
-Examples:
+Subpackages:
 
-* Application services
-* Transaction boundaries
-* Coordination between domain objects and repositories
+- `command`: input objects for state-changing use cases
+- `query`: input objects for read-only use cases
+- `service`: application services and transaction boundaries
+- `result`: output objects returned by application services
 
 ---
 
@@ -72,12 +86,12 @@ Examples:
 
 Business models and business rules.
 
-Examples:
+Subpackages:
 
-* Entities
-* Value objects
-* Domain services
-* Repository interfaces
+- `model`: aggregates, entities, and value objects
+- `repository`: domain repository interfaces
+- `type`: enums and domain-specific types
+- `service`: domain services when business logic does not naturally belong to one model
 
 ---
 
@@ -85,11 +99,12 @@ Examples:
 
 Technical implementations.
 
-Examples:
+Subpackages:
 
-* JPA repository implementations
-* External API clients
-* Persistence adapters
+- `entity`: JPA entities and persistence-specific models
+- `repository`: Spring Data JPA repositories
+- `adapter`: implementations of domain repository interfaces
+- `mapper`: conversions between domain models and infrastructure entities
 
 ---
 

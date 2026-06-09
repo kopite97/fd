@@ -7,15 +7,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.kopite.fd.assessment.application.CompleteAssessmentResult;
-import com.kopite.fd.assessment.application.CompleteAssessmentService;
-import com.kopite.fd.assessment.application.GetAssessmentQuestionsResult;
-import com.kopite.fd.assessment.application.GetAssessmentQuestionsService;
-import com.kopite.fd.assessment.application.StartAssessmentResult;
-import com.kopite.fd.assessment.application.StartAssessmentService;
-import com.kopite.fd.assessment.application.SubmitAssessmentAnswerResult;
-import com.kopite.fd.assessment.application.SubmitAssessmentAnswerService;
-import com.kopite.fd.assessment.domain.AssessmentStatus;
+import com.kopite.fd.assessment.application.result.CompleteAssessmentResult;
+import com.kopite.fd.assessment.application.result.GetAssessmentQuestionsResult;
+import com.kopite.fd.assessment.application.result.StartAssessmentResult;
+import com.kopite.fd.assessment.application.result.SubmitAssessmentAnswerResult;
+import com.kopite.fd.assessment.application.service.CompleteAssessmentService;
+import com.kopite.fd.assessment.application.service.GetAssessmentQuestionsService;
+import com.kopite.fd.assessment.application.service.StartAssessmentService;
+import com.kopite.fd.assessment.application.service.SubmitAssessmentAnswerService;
+import com.kopite.fd.assessment.domain.type.AssessmentStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.Test;

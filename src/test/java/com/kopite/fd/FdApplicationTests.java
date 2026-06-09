@@ -1,12 +1,12 @@
 package com.kopite.fd;
 
-import com.kopite.fd.assessment.domain.AssessmentAnswerRepository;
-import com.kopite.fd.assessment.domain.AssessmentDnaScoreRepository;
-import com.kopite.fd.assessment.domain.AssessmentQuestionOptionRepository;
-import com.kopite.fd.assessment.domain.AssessmentQuestionRepository;
-import com.kopite.fd.assessment.domain.AssessmentRepository;
-import com.kopite.fd.assessment.domain.DnaDefinitionRepository;
-import com.kopite.fd.assessment.domain.OptionScoreMappingRepository;
+import com.kopite.fd.assessment.domain.repository.AssessmentAnswerRepository;
+import com.kopite.fd.assessment.domain.repository.AssessmentDnaScoreRepository;
+import com.kopite.fd.assessment.domain.repository.AssessmentQuestionOptionRepository;
+import com.kopite.fd.assessment.domain.repository.AssessmentQuestionRepository;
+import com.kopite.fd.assessment.domain.repository.AssessmentRepository;
+import com.kopite.fd.assessment.domain.repository.DnaDefinitionRepository;
+import com.kopite.fd.assessment.domain.repository.OptionScoreMappingRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;

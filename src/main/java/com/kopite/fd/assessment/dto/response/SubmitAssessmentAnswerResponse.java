@@ -1,6 +1,6 @@
 package com.kopite.fd.assessment.dto.response;
 
-import com.kopite.fd.assessment.application.SubmitAssessmentAnswerResult;
+import com.kopite.fd.assessment.application.result.SubmitAssessmentAnswerResult;
 import java.time.LocalDateTime;
 
 public record SubmitAssessmentAnswerResponse(

@@ -1,7 +1,7 @@
 package com.kopite.fd.assessment.dto.response;
 
-import com.kopite.fd.assessment.application.CompleteAssessmentResult;
-import com.kopite.fd.assessment.domain.AssessmentStatus;
+import com.kopite.fd.assessment.application.result.CompleteAssessmentResult;
+import com.kopite.fd.assessment.domain.type.AssessmentStatus;
 import java.time.LocalDateTime;
 import java.util.List;
 

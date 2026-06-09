@@ -44,23 +44,13 @@ Infrastructure is responsible for persistence and external integrations.
 * Infrastructure may depend on Domain.
 
 ---
-
+sss
 ## Package Structure
 
 Before creating or modifying backend packages, review `docs/architecture/PACKAGE_STRUCTURE.md`.
 
 Each domain should follow a consistent structure.
 
-Example:
-
-```text
-recommendation
-├── controller
-├── application
-├── domain
-├── infrastructure
-└── dto
-```
 
 * Create new packages only when there is a clear responsibility.
 * Do not create empty packages without implementation.
@@ -72,17 +62,6 @@ Infrastructure contains persistence implementations and external integrations.
 Repository interfaces belong to the Domain layer.
 
 Repository implementations belong to the Infrastructure layer.
-
-Example:
-
-```text
-recommendation
-├── domain
-│   └── RecommendationRepository
-│
-├── infrastructure
-│   └── JpaRecommendationRepository
-```
 
 DTOs should be organized by responsibility when complexity increases.
 
