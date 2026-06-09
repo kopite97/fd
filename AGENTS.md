@@ -42,14 +42,16 @@ More specific rules override broader rules.
 * If anything is unclear, stop and ask for clarification.
 * Before implementation, review the relevant AGENTS.md files and approved Plans or Decisions under `docs`.
 * If no applicable Plan or Decision exists, create a proposal and wait for approval.
+* When reviewing project resources, prefer Markdown documents under `docs/resources`.
+* Do not rely on binary source documents when equivalent Markdown resources exist.
 
 ---
 
 ## Source of Truth
 
 1. User Instructions
-2. Approved Decisions
-3. Domain-specific AGENTS.md
+2. Domain-specific AGENTS.md
+3. Approved Decisions
 4. Approved Plans
 5. Existing Implementation
 

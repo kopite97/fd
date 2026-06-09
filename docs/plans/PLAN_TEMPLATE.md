@@ -89,6 +89,16 @@ Related Decisions (Optional):
 * Plan completed
 
 ---
+## Validation
+
+Describe how this Plan should be verified.
+
+- Lint/static checks:
+- Unit tests:
+- Integration tests:
+- Manual verification:
+
+---
 
 ## Completion Criteria
 
@@ -96,4 +106,7 @@ This Plan is considered complete when:
 
 - [ ] All tasks are completed
 - [ ] Scope requirements are satisfied
-- [ ] Related work has been verified
+- [ ] Lint or static checks pass
+- [ ] Related tests pass
+- [ ] Validation results are recorded
+- [ ] Plan status updated in `docs/plans/README.md`

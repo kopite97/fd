@@ -15,6 +15,12 @@ All implementation work should be associated with a Plan.
 
 ---
 
+## Plan Completion
+
+A Plan may be marked as Completed only after required lint/static checks and related tests have passed.
+
+---
+
 ## Plan Selection
 
 If multiple applicable Plans exist:
