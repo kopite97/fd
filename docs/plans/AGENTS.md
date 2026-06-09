@@ -15,44 +15,6 @@ All implementation work should be associated with a Plan.
 
 ---
 
-## Plan Execution
-
-Once a Plan is approved, the agent may execute all tasks within the approved Plan scope without asking for approval after each task.
-
-The agent must stop and ask for approval only when:
-
-- Work falls outside the approved Plan scope
-- A new Decision is required
-- A conflict with an existing Decision or AGENTS.md rule is found
-- The implementation requires introducing a new dependency, framework, or architectural pattern
-
-Within the approved Plan scope, the agent should:
-
-1. Implement the planned work.
-2. Add required tests.
-3. Run required verification checks.
-4. Fix failures within scope.
-5. Update the Plan progress.
-6. Mark the Plan Completed only when all completion criteria are satisfied.
-
----
-
-## Plan Completion
-
-A Plan may be marked as Completed only after required lint/static checks and related tests have passed.
-
----
-
-## Plan Selection
-
-If multiple applicable Plans exist:
-
-1. Prefer the Plan explicitly referenced by the user.
-2. Otherwise select the most relevant active Plan.
-3. Do not work across multiple Plans unless explicitly requested.
-
----
-
 ## Plan Workflow
 
 When a new request is received:
@@ -68,13 +30,145 @@ Do not begin implementation without an approved Plan.
 
 ---
 
+## Plan Selection
+
+If multiple applicable Plans exist:
+
+1. Prefer the Plan explicitly referenced by the user.
+2. Otherwise select the most relevant active Plan.
+3. Do not work across multiple Plans unless explicitly requested.
+
+---
+
 ## Plan Identification
 
 Before implementation:
 
-- Identify and reference the applicable Plan ID.
-- Verify the requested work is within the selected Plan scope.
-- If unclear, ask for clarification.
+* Identify and reference the applicable Plan ID.
+* Verify the requested work is within the selected Plan scope.
+* If unclear, ask for clarification.
+
+---
+
+## Plan Execution
+
+Once a Plan is approved, the agent may execute all tasks within the approved Plan scope without asking for approval after each task.
+
+The agent must stop and ask for approval only when:
+
+* Work falls outside the approved Plan scope
+* A new Decision is required
+* A conflict with an existing Decision or AGENTS.md rule is found
+* The implementation requires introducing a new dependency, framework, or architectural pattern
+
+Within the approved Plan scope, the agent should:
+
+1. Implement the planned work.
+2. Add required tests.
+3. Run required verification checks.
+4. Fix failures within scope.
+5. Update task progress.
+6. Update the Progress Log.
+7. Keep Plan status synchronized with actual progress.
+8. Complete the Plan when all completion requirements are satisfied.
+
+---
+
+## Plan Scope
+
+Work only within the approved Plan scope.
+
+If new work falls outside the current Plan:
+
+1. Stop.
+2. Create a new Plan or update the existing Plan.
+3. Request approval.
+
+Do not expand scope without approval.
+
+---
+
+## Plan Status
+
+A Plan must use one of the following statuses:
+
+* Draft — Initial work in progress
+* Proposed — Waiting for user approval
+* Approved — Approved but not started
+* In Progress — Work has started
+* Completed — Finished and verified
+* Cancelled — No longer applicable
+
+Rules:
+
+* Implementation may only begin after user approval.
+* When implementation begins, change Approved → In Progress.
+* When all Completion Criteria are satisfied, change In Progress → Completed.
+* Update `docs/plans/README.md` whenever Plan status changes.
+* Completed and Cancelled Plans are historical records and should not be selected for new work.
+
+---
+
+## Task Progress Updates
+
+When implementing work under an Approved Plan:
+
+* Update task checkboxes as work is completed.
+* Update the Progress Log when meaningful milestones are reached.
+* Keep Plan status synchronized with actual implementation progress.
+
+A separate user instruction is not required to update completed tasks.
+
+However:
+
+* Do not mark a task complete unless the implementation for that task exists.
+* Do not mark a Plan Completed until all Completion Criteria are satisfied.
+
+---
+
+## Automatic Plan Completion
+
+When all of the following are true:
+
+* All Plan tasks are completed
+* All Completion Criteria are satisfied
+* Required tests pass
+* Required verification checks pass
+* Validation results are recorded
+
+The agent should automatically:
+
+1. Update task checkboxes.
+2. Update Completion Criteria checkboxes.
+3. Update the Progress Log.
+4. Change Plan status to Completed.
+5. Update `docs/plans/README.md`.
+
+A separate user approval is not required for Plan completion.
+
+---
+
+## Verification Requirement
+
+Code generation alone is not sufficient.
+
+Before a Plan may be marked Completed:
+
+* Required tests must exist.
+* Required tests must execute successfully.
+* Required verification checks must execute successfully.
+* Validation results must be recorded.
+
+If verification cannot be executed:
+
+* The Plan must remain In Progress.
+* The Plan must not be marked Completed.
+
+Examples:
+
+* Tests were written but not executed → Not Completed
+* Build compiles but tests were not executed → Not Completed
+* Verification environment unavailable → Remain In Progress
 
 ---
 
@@ -121,43 +215,9 @@ Update `./README.md` whenever:
 
 Entries in `./README.md` must match the corresponding document.
 
-- ID must exactly match the document ID.
-- Title must exactly match the document title.
-- Status must reflect the current document status.
-
----
-
-## Plan Status
-
-A Plan must use one of the following statuses:
-
-* Draft — Initial work in progress
-* Proposed — Waiting for user approval
-* Approved — Approved but not started
-* In Progress — Work has started
-* Completed — Finished and accepted
-* Cancelled — No longer applicable
-
-Rules:
-- Implementation may only begin after user approval.
-- When implementation begins, change Approved → In Progress.
-- When all Completion Criteria are satisfied, change In Progress → Completed.
-- Update docs/plans/README.md whenever Plan status changes.
-- Completed and Cancelled plans are historical records and should not be selected for new work.
-
----
-
-## Plan Scope
-
-Work only within the approved Plan scope.
-
-If new work falls outside the current Plan:
-
-1. Stop.
-2. Create a new Plan or update the existing Plan.
-3. Request approval.
-
-Do not expand scope without approval.
+* ID must exactly match the document ID.
+* Title must exactly match the document title.
+* Status must reflect the current document status.
 
 ---
 
@@ -191,23 +251,8 @@ Each Plan should contain:
 * Tasks
 * Related Decisions
 * Dependencies
-
----
-
-## Task Progress Updates
-
-When implementing work under an Approved Plan:
-
-- Update task checkboxes as work is completed.
-- Update the Progress Log when meaningful milestones are reached.
-- Keep Plan status synchronized with actual implementation progress.
-
-A separate user instruction is not required to update completed tasks.
-
-However:
-
-- Do not mark a task complete unless the implementation for that task exists.
-- Do not mark a Plan Completed until all Completion Criteria are satisfied.
+* Validation
+* Completion Criteria
 
 ---
 
@@ -219,5 +264,3 @@ Available types:
 * Fix
 * Refactor
 * Test
-
-
