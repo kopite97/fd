@@ -22,7 +22,10 @@ When a new request is received:
 1. Review `./README.md`
 2. Check for an existing applicable Plan.
 3. If an applicable Plan exists, continue using it.
-4. If no applicable Plan exists, create a new Plan using `./PLAN_TEMPLATE.md`.
+4. If no applicable Plan exists:
+
+    * Use `./PLAN_RUNTIME_TEMPLATE.md` when the work introduces APIs, external integrations, scheduled jobs, data import/export flows, or executable application behavior.
+    * Otherwise use `./PLAN_TEMPLATE.md`.
 5. Present the Plan to the user.
 6. Wait for approval before implementation.
 
@@ -134,6 +137,7 @@ When all of the following are true:
 * All Completion Criteria are satisfied
 * Required tests pass
 * Required verification checks pass
+* Required runtime verification passes (when applicable)
 * Validation results are recorded
 
 The agent should automatically:
@@ -157,6 +161,7 @@ Before a Plan may be marked Completed:
 * Required tests must exist.
 * Required tests must execute successfully.
 * Required verification checks must execute successfully.
+* Required runtime verification must execute successfully when the Plan introduces executable behavior, external integrations, scheduled jobs, APIs, or data import/export flows.
 * Validation results must be recorded.
 
 If verification cannot be executed:
@@ -164,11 +169,19 @@ If verification cannot be executed:
 * The Plan must remain In Progress.
 * The Plan must not be marked Completed.
 
+If runtime verification is required but cannot be executed:
+
+* The Plan must remain In Progress.
+* The missing runtime verification must be documented.
+
 Examples:
 
 * Tests were written but not executed → Not Completed
 * Build compiles but tests were not executed → Not Completed
 * Verification environment unavailable → Remain In Progress
+* API implementation completed but endpoint was never called → Not Completed
+* External integration implemented but runtime response was not verified → Not Completed
+* Scheduled job implemented but never executed in a running application → Not Completed
 
 ---
 
@@ -189,10 +202,21 @@ Use `./README.md` to:
 
 Use `./PLAN_TEMPLATE.md` when:
 
-* Creating a new Plan
-* Replacing an outdated Plan format
+* The work does not require Runtime Verification
+* Creating a standard Feature, Fix, Refactor, or Test Plan
+* Replacing an outdated standard Plan format
 
-All new Plans should follow the template unless explicitly instructed otherwise.
+### PLAN_RUNTIME_TEMPLATE.md
+
+Use `./PLAN_RUNTIME_TEMPLATE.md` when the work introduces:
+
+* APIs
+* External integrations
+* Scheduled jobs
+* Data import/export flows
+* Executable application behavior
+
+All runtime Plans should follow the runtime template unless explicitly instructed otherwise.
 
 ---
 
@@ -239,7 +263,7 @@ File names should remain stable after creation.
 
 ## Plan Structure
 
-Each Plan should contain:
+Standard Plans (`PLAN_TEMPLATE.md`) should contain:
 
 * Plan ID
 * Title
@@ -253,6 +277,23 @@ Each Plan should contain:
 * Dependencies
 * Validation
 * Completion Criteria
+
+Runtime Plans (`PLAN_RUNTIME_TEMPLATE.md`) should additionally contain:
+
+* Runtime Verification
+
+---
+
+## Runtime Verification Requirements
+
+Runtime Plans must explicitly define Runtime Verification steps.
+
+The Runtime Verification section should describe:
+
+* What will be executed
+* What success looks like
+* What outputs or side effects will be verified
+* How the verification result will be recorded
 
 ---
 

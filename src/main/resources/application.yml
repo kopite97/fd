@@ -2,6 +2,9 @@ spring:
   application:
     name: fd
 
+  config:
+    import: optional:file:.env[.properties]
+
   datasource:
     url: jdbc:postgresql://localhost:5432/fd
     username: postgres
@@ -32,3 +35,12 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.orm.jdbc.bind: trace
+
+google:
+  sheets:
+    clubs-url: ${CLUBS_URL}
+    emotional-dna-url: ${EMOTIONALDNA_URL}
+    playstyle-dna-url: ${PLAYSTYLEDNA_URL}
+    club-status-url: ${CLUBSTATUS_URL}
+    club-tags-url: ${CLUBTAGS_URL}
+    dna-rubric-url: ${DNARUBRIC_URL}
