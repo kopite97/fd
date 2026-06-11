@@ -12,3 +12,5 @@
 | PLAN-0008 | BaseEntity Soft Delete and Schema Convention Alignment | Completed |
 | PLAN-0009 | Assessment Question Version Type Alignment Fix | Completed |
 | PLAN-0010 | String-Based Version Identifier Policy Alignment Fix | Completed |
+| PLAN-0011 | Football DNA Data Sheet-to-Schema Synchronization Mapping | Completed |
+| PLAN-0012 | Club Domain Initial Clubs Implementation | Completed |

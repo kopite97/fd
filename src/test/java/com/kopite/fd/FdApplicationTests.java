@@ -7,6 +7,7 @@ import com.kopite.fd.assessment.domain.repository.AssessmentQuestionRepository;
 import com.kopite.fd.assessment.domain.repository.AssessmentRepository;
 import com.kopite.fd.assessment.domain.repository.DnaDefinitionRepository;
 import com.kopite.fd.assessment.domain.repository.OptionScoreMappingRepository;
+import com.kopite.fd.club.domain.repository.ClubRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -38,6 +39,9 @@ class FdApplicationTests {
 
     @MockitoBean
     private OptionScoreMappingRepository optionScoreMappingRepository;
+
+    @MockitoBean
+    private ClubRepository clubRepository;
 
     @Test
     void contextLoads() {

@@ -333,3 +333,27 @@ Available types:
 * Fix
 * Refactor
 * Test
+* Design
+
+---
+
+## Design Plans
+
+Design Plans are used when the primary deliverable is a design artifact rather than executable implementation.
+
+Examples:
+
+* Architecture design
+* Synchronization mapping design
+* API contract design
+* Data model design
+* Recommendation algorithm design
+
+A Design Plan may be marked Completed when:
+
+* The design artifact exists
+* The design artifact has been reviewed
+* Open questions are resolved or explicitly documented
+* The design can be used as the baseline for future implementation Plans
+
+Implementation of dependent Feature Plans is not required for Design Plan completion.
