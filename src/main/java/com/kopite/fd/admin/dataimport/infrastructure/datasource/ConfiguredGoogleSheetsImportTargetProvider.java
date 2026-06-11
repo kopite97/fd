@@ -4,16 +4,14 @@ import com.kopite.fd.admin.dataimport.application.model.ImportTarget;
 import com.kopite.fd.admin.dataimport.domain.repository.FootballDnaImportTargetProvider;
 import com.kopite.fd.admin.dataimport.domain.type.ImportSourceType;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class ConfiguredGoogleSheetsImportTargetProvider implements FootballDnaImportTargetProvider {
 
     private final GoogleSheetsProperties googleSheetsProperties;
-
-    public ConfiguredGoogleSheetsImportTargetProvider(GoogleSheetsProperties googleSheetsProperties) {
-        this.googleSheetsProperties = googleSheetsProperties;
-    }
 
     @Override
     public List<ImportTarget> getRequiredTargets() {

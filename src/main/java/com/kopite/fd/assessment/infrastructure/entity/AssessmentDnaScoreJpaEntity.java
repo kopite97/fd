@@ -1,17 +1,24 @@
 package com.kopite.fd.assessment.infrastructure.entity;
 
 import com.kopite.fd.assessment.domain.model.AssessmentDnaScore;
+import com.kopite.fd.global.infrastructure.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
 @Entity
 @Table(name = "assessment_dna_scores")
-public class AssessmentDnaScoreJpaEntity {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class AssessmentDnaScoreJpaEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,32 +30,22 @@ public class AssessmentDnaScoreJpaEntity {
     @Column(name = "dna_definition_id", nullable = false)
     private Long dnaDefinitionId;
 
-    @Column(nullable = false)
-    private int score;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
-
-    protected AssessmentDnaScoreJpaEntity() {
-    }
+    @Column(name = "score", precision = 5, scale = 2, nullable = false)
+    private BigDecimal score;
 
     private AssessmentDnaScoreJpaEntity(
             Long id,
             Long assessmentId,
             Long dnaDefinitionId,
-            int score,
+            BigDecimal score,
             LocalDateTime createdAt,
             LocalDateTime updatedAt
     ) {
+        super(createdAt, updatedAt);
         this.id = id;
         this.assessmentId = assessmentId;
         this.dnaDefinitionId = dnaDefinitionId;
         this.score = score;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
     }
 
     public static AssessmentDnaScoreJpaEntity fromDomain(AssessmentDnaScore assessmentDnaScore) {
@@ -56,7 +53,7 @@ public class AssessmentDnaScoreJpaEntity {
                 assessmentDnaScore.getId(),
                 assessmentDnaScore.getAssessmentId(),
                 assessmentDnaScore.getDnaDefinitionId(),
-                assessmentDnaScore.getScore(),
+                BigDecimal.valueOf(assessmentDnaScore.getScore()),
                 assessmentDnaScore.getCreatedAt(),
                 assessmentDnaScore.getUpdatedAt()
         );
@@ -67,9 +64,9 @@ public class AssessmentDnaScoreJpaEntity {
                 id,
                 assessmentId,
                 dnaDefinitionId,
-                score,
-                createdAt,
-                updatedAt
+                score.intValue(),
+                getCreatedAt(),
+                getUpdatedAt()
         );
     }
 }

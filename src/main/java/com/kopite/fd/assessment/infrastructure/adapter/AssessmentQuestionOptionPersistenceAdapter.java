@@ -5,16 +5,14 @@ import com.kopite.fd.assessment.domain.repository.AssessmentQuestionOptionReposi
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentQuestionOptionJpaEntity;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentQuestionOptionJpaRepository;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class AssessmentQuestionOptionPersistenceAdapter implements AssessmentQuestionOptionRepository {
 
     private final AssessmentQuestionOptionJpaRepository assessmentQuestionOptionJpaRepository;
-
-    public AssessmentQuestionOptionPersistenceAdapter(AssessmentQuestionOptionJpaRepository assessmentQuestionOptionJpaRepository) {
-        this.assessmentQuestionOptionJpaRepository = assessmentQuestionOptionJpaRepository;
-    }
 
     @Override
     public List<AssessmentQuestionOption> findActiveByQuestionIds(List<Long> questionIds) {

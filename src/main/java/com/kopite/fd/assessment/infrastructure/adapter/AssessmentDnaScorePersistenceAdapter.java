@@ -5,16 +5,14 @@ import com.kopite.fd.assessment.domain.repository.AssessmentDnaScoreRepository;
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentDnaScoreJpaEntity;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentDnaScoreJpaRepository;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class AssessmentDnaScorePersistenceAdapter implements AssessmentDnaScoreRepository {
 
     private final AssessmentDnaScoreJpaRepository assessmentDnaScoreJpaRepository;
-
-    public AssessmentDnaScorePersistenceAdapter(AssessmentDnaScoreJpaRepository assessmentDnaScoreJpaRepository) {
-        this.assessmentDnaScoreJpaRepository = assessmentDnaScoreJpaRepository;
-    }
 
     @Override
     public List<AssessmentDnaScore> saveAll(List<AssessmentDnaScore> assessmentDnaScores) {

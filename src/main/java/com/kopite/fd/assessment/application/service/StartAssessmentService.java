@@ -6,17 +6,15 @@ import com.kopite.fd.assessment.domain.model.Assessment;
 import com.kopite.fd.assessment.domain.repository.AssessmentRepository;
 import com.kopite.fd.assessment.domain.type.AssessmentStatus;
 import java.time.LocalDateTime;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class StartAssessmentService {
 
     private final AssessmentRepository assessmentRepository;
-
-    public StartAssessmentService(AssessmentRepository assessmentRepository) {
-        this.assessmentRepository = assessmentRepository;
-    }
 
     @Transactional
     public StartAssessmentResult start(StartAssessmentCommand command) {

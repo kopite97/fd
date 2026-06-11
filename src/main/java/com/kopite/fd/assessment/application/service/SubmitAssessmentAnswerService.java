@@ -8,22 +8,16 @@ import com.kopite.fd.assessment.domain.repository.AssessmentAnswerRepository;
 import com.kopite.fd.assessment.domain.repository.AssessmentRepository;
 import com.kopite.fd.assessment.domain.type.AssessmentStatus;
 import java.time.LocalDateTime;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class SubmitAssessmentAnswerService {
 
     private final AssessmentRepository assessmentRepository;
     private final AssessmentAnswerRepository assessmentAnswerRepository;
-
-    public SubmitAssessmentAnswerService(
-            AssessmentRepository assessmentRepository,
-            AssessmentAnswerRepository assessmentAnswerRepository
-    ) {
-        this.assessmentRepository = assessmentRepository;
-        this.assessmentAnswerRepository = assessmentAnswerRepository;
-    }
 
     @Transactional
     public SubmitAssessmentAnswerResult submit(SubmitAssessmentAnswerCommand command) {

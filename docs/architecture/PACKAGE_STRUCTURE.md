@@ -15,12 +15,131 @@ com.kopite.fd
 ├── global
 ├── user
 ├── assessment
+├── dna
 ├── club
 ├── recommendation
 ├── ai
 ├── harness
 └── admin
 ```
+
+---
+
+## Top-Level Package Responsibilities
+
+### global
+
+Shared infrastructure and cross-cutting concerns used across multiple domains.
+
+Examples:
+
+* common configuration
+* common exception handling
+* common response models
+* shared base entity
+* shared utilities
+
+Domain-specific business logic must not be placed in `global`.
+
+---
+
+### user
+
+Registered user identity and user profile responsibility.
+
+Owns:
+
+* `users`
+
+---
+
+### assessment
+
+Assessment execution, questions, answers, option scoring, and calculated user DNA scores.
+
+Owns:
+
+* `user_assessments`
+* `questions`
+* `question_options`
+* `option_score_mappings`
+* `assessment_answers`
+* `assessment_dna_scores`
+
+---
+
+### dna
+
+Shared DNA master data.
+
+Owns:
+
+* `dna_definitions`
+
+Shared DNA master data belongs to `dna`, even when referenced by assessment, club, or recommendation features.
+
+---
+
+### club
+
+Club master data and club-specific DNA metadata.
+
+Owns:
+
+* `clubs`
+* `club_dna_scores`
+* `club_tags`
+
+---
+
+### recommendation
+
+Generated recommendation results and recommendation-specific AI adjustment history.
+
+Owns:
+
+* `assessment_recommendations`
+* `assessment_ai_adjustments`
+
+Recommendation-specific AI decisions and stored results belong to `recommendation`.
+
+---
+
+### ai
+
+External AI integration logic.
+
+Owns:
+
+* external AI clients
+* prompt execution
+* model adapters
+
+`ai` should not own persistence tables unless a future Decision says otherwise.
+
+---
+
+### harness
+
+Development-time validation, automation, and project verification helpers.
+
+Owns:
+
+* validation helpers
+* automation helpers
+* project verification utilities
+
+---
+
+### admin
+
+Administrator-only functionality.
+
+Examples:
+
+* Football DNA Data import
+* operational tools
+* management APIs
 
 ---
 
@@ -53,6 +172,85 @@ Each domain may use the following structure when required:
 Not all packages are required for every domain.
 
 Packages should only be created when they have a clear responsibility.
+
+Do not create empty packages.
+
+Feature-specific infrastructure may use alternative subpackages when the responsibility is clear and documented in this file.
+
+---
+
+## Database Table Ownership
+
+Each database table should be implemented under the package that owns its domain responsibility.
+
+```text
+user
+└── users
+
+assessment
+├── user_assessments
+├── questions
+├── question_options
+├── option_score_mappings
+├── assessment_answers
+└── assessment_dna_scores
+
+dna
+└── dna_definitions
+
+club
+├── clubs
+├── club_dna_scores
+└── club_tags
+
+recommendation
+├── assessment_recommendations
+└── assessment_ai_adjustments
+
+ai
+└── No database tables
+```
+
+Ownership rules:
+
+* `user` owns registered user identity data.
+* `assessment` owns assessment sessions, questions, answers, option scoring, and calculated user DNA scores.
+* `dna` owns shared DNA master definitions.
+* `club` owns club master data, club DNA scores, and club tags.
+* `recommendation` owns generated recommendation results and AI adjustment history.
+* `ai` owns AI integration logic only and should not own persistence tables unless a future Decision says otherwise.
+
+---
+
+## Global Package Structure
+
+The `global` package contains cross-cutting infrastructure shared by multiple domains.
+
+Recommended structure:
+
+```text
+global
+├── config
+├── exception
+├── response
+├── infrastructure
+│   └── entity
+│       └── BaseEntity
+└── util
+```
+
+`BaseEntity` should provide common audit fields inherited by all JPA entities.
+
+Common audit fields:
+
+```text
+created_at
+updated_at
+```
+
+Domain packages should not define duplicate base entity classes.
+
+Only create global subpackages when actual implementation exists.
 
 ---
 

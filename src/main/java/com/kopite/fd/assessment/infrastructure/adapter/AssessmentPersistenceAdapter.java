@@ -5,16 +5,14 @@ import com.kopite.fd.assessment.domain.repository.AssessmentRepository;
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentJpaEntity;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentJpaRepository;
 import java.util.Optional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class AssessmentPersistenceAdapter implements AssessmentRepository {
 
     private final AssessmentJpaRepository assessmentJpaRepository;
-
-    public AssessmentPersistenceAdapter(AssessmentJpaRepository assessmentJpaRepository) {
-        this.assessmentJpaRepository = assessmentJpaRepository;
-    }
 
     @Override
     public Assessment save(Assessment assessment) {

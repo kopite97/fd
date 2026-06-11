@@ -1,6 +1,7 @@
 package com.kopite.fd.assessment.infrastructure.entity;
 
 import com.kopite.fd.assessment.domain.model.AssessmentAnswer;
+import com.kopite.fd.global.infrastructure.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,10 +9,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
 @Entity
 @Table(name = "assessment_answers")
-public class AssessmentAnswerJpaEntity {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class AssessmentAnswerJpaEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,20 +29,14 @@ public class AssessmentAnswerJpaEntity {
     @Column(name = "question_id", nullable = false)
     private Long questionId;
 
-    @Column(name = "option_id")
+    @Column(name = "option_id", nullable = true)
     private Long optionId;
 
-    @Column(name = "answer_text")
+    @Column(name = "answer_text", nullable = true)
     private String answerText;
 
-    @Column(name = "score_snapshot_json")
+    @Column(name = "score_snapshot_json", nullable = true)
     private String scoreSnapshotJson;
-
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
-
-    protected AssessmentAnswerJpaEntity() {
-    }
 
     private AssessmentAnswerJpaEntity(
             Long id,
@@ -47,13 +47,13 @@ public class AssessmentAnswerJpaEntity {
             String scoreSnapshotJson,
             LocalDateTime createdAt
     ) {
+        super(createdAt, createdAt);
         this.id = id;
         this.assessmentId = assessmentId;
         this.questionId = questionId;
         this.optionId = optionId;
         this.answerText = answerText;
         this.scoreSnapshotJson = scoreSnapshotJson;
-        this.createdAt = createdAt;
     }
 
     public static AssessmentAnswerJpaEntity fromDomain(AssessmentAnswer assessmentAnswer) {
@@ -76,7 +76,7 @@ public class AssessmentAnswerJpaEntity {
                 optionId,
                 answerText,
                 scoreSnapshotJson,
-                createdAt
+                getCreatedAt()
         );
     }
 }

@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AssessmentQuestionJpaRepository extends JpaRepository<AssessmentQuestionJpaEntity, Long> {
 
-    List<AssessmentQuestionJpaEntity> findByQuestionVersionAndActiveTrueOrderByDisplayOrderAsc(String questionVersion);
+    List<AssessmentQuestionJpaEntity> findByQuestionVersionAndActiveTrueOrderByDisplayOrderAsc(Integer questionVersion);
 }

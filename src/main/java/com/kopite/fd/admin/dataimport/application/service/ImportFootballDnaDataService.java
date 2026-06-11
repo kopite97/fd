@@ -15,9 +15,11 @@ import com.kopite.fd.admin.dataimport.domain.type.ImportSourceType;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ImportFootballDnaDataService {
 
     private final FootballDnaImportTargetProvider footballDnaImportTargetProvider;
@@ -25,20 +27,6 @@ public class ImportFootballDnaDataService {
     private final List<FootballDnaPayloadParser> footballDnaPayloadParsers;
     private final List<FootballDnaImportModelConverter> footballDnaImportModelConverters;
     private final FootballDnaDataArtifactRepository footballDnaDataArtifactRepository;
-
-    public ImportFootballDnaDataService(
-            FootballDnaImportTargetProvider footballDnaImportTargetProvider,
-            List<FootballDnaSourceAcquirer> footballDnaSourceAcquirers,
-            List<FootballDnaPayloadParser> footballDnaPayloadParsers,
-            List<FootballDnaImportModelConverter> footballDnaImportModelConverters,
-            FootballDnaDataArtifactRepository footballDnaDataArtifactRepository
-    ) {
-        this.footballDnaImportTargetProvider = footballDnaImportTargetProvider;
-        this.footballDnaSourceAcquirers = footballDnaSourceAcquirers;
-        this.footballDnaPayloadParsers = footballDnaPayloadParsers;
-        this.footballDnaImportModelConverters = footballDnaImportModelConverters;
-        this.footballDnaDataArtifactRepository = footballDnaDataArtifactRepository;
-    }
 
     public ImportFootballDnaDataResult importData() {
         LocalDateTime importedAt = LocalDateTime.now();

@@ -4,6 +4,19 @@
 
 This document describes the database tables used by Football DNA.
 
+All tables inherit common audit columns through a shared base entity.
+
+---
+
+## Common Audit Columns
+
+The following columns are inherited by all tables.
+
+| Column     | Description           |
+| ---------- | --------------------- |
+| created_at | Creation timestamp    |
+| updated_at | Last update timestamp |
+
 ---
 
 # users
@@ -21,8 +34,6 @@ Stores registered users.
 | nickname         | User nickname                     |
 | provider         | OAuth provider                    |
 | provider_user_id | Provider-specific user identifier |
-| created_at       | Creation timestamp                |
-| updated_at       | Last update timestamp             |
 
 ---
 
@@ -46,8 +57,6 @@ Represents a single Football DNA assessment session.
 | club_data_version | Club data version                |
 | started_at        | Assessment start time            |
 | completed_at      | Assessment completion time       |
-| created_at        | Creation timestamp               |
-| updated_at        | Last update timestamp            |
 
 ---
 
@@ -68,8 +77,6 @@ Master table for all DNA attributes.
 | description   | DNA description                      |
 | display_order | Display order                        |
 | is_active     | Active flag                          |
-| created_at    | Creation timestamp                   |
-| updated_at    | Last update timestamp                |
 
 ---
 
@@ -81,17 +88,15 @@ Stores assessment questions.
 
 ## Columns
 
-| Column                    | Description           |
-| ------------------------- | --------------------- |
-| id                        | Question identifier   |
-| question_text             | Question content      |
-| question_type             | Question type         |
-| primary_dna_definition_id | Primary DNA target    |
-| display_order             | Display order         |
-| question_version          | Question version      |
-| is_active                 | Active flag           |
-| created_at                | Creation timestamp    |
-| updated_at                | Last update timestamp |
+| Column                    | Description         |
+| ------------------------- | ------------------- |
+| id                        | Question identifier |
+| question_text             | Question content    |
+| question_type             | Question type       |
+| primary_dna_definition_id | Primary DNA target  |
+| display_order             | Display order       |
+| question_version          | Question version    |
+| is_active                 | Active flag         |
 
 ---
 
@@ -103,15 +108,13 @@ Stores selectable options for questions.
 
 ## Columns
 
-| Column        | Description           |
-| ------------- | --------------------- |
-| id            | Option identifier     |
-| question_id   | Associated question   |
-| option_text   | Option content        |
-| display_order | Display order         |
-| is_active     | Active flag           |
-| created_at    | Creation timestamp    |
-| updated_at    | Last update timestamp |
+| Column        | Description         |
+| ------------- | ------------------- |
+| id            | Option identifier   |
+| question_id   | Associated question |
+| option_text   | Option content      |
+| display_order | Display order       |
+| is_active     | Active flag         |
 
 ---
 
@@ -123,14 +126,12 @@ Maps selected options to DNA score changes.
 
 ## Columns
 
-| Column            | Description           |
-| ----------------- | --------------------- |
-| id                | Mapping identifier    |
-| option_id         | Related option        |
-| dna_definition_id | Target DNA            |
-| score_delta       | DNA score adjustment  |
-| created_at        | Creation timestamp    |
-| updated_at        | Last update timestamp |
+| Column            | Description          |
+| ----------------- | -------------------- |
+| id                | Mapping identifier   |
+| option_id         | Related option       |
+| dna_definition_id | Target DNA           |
+| score_delta       | DNA score adjustment |
 
 ---
 
@@ -150,7 +151,6 @@ Stores user responses.
 | option_id           | Selected option               |
 | answer_text         | Free-text answer              |
 | score_snapshot_json | Score snapshot at answer time |
-| created_at          | Creation timestamp            |
 
 ---
 
@@ -168,8 +168,6 @@ Stores calculated DNA scores for an assessment.
 | assessment_id     | Assessment identifier |
 | dna_definition_id | DNA definition        |
 | score             | Calculated DNA score  |
-| created_at        | Creation timestamp    |
-| updated_at        | Last update timestamp |
 
 ---
 
@@ -188,11 +186,14 @@ Stores football club information.
 | short_name             | Short club name       |
 | code                   | Club code             |
 | league                 | League name           |
+| country                | Country               |
 | competition_tier       | Competitive level     |
 | trend_direction        | Club direction        |
 | beginner_accessibility | Beginner friendliness |
-| created_at             | Creation timestamp    |
-| updated_at             | Last update timestamp |
+| is_active              | Active Flag           |
+| logo_url               | Logo Image URL        |
+| primary_color          | HEX code              |
+| secondary_color        | HEX code              |   
 
 ---
 
@@ -212,8 +213,6 @@ Stores DNA scores assigned to clubs.
 | score             | DNA score                 |
 | is_core           | Core DNA flag             |
 | data_version      | Data version              |
-| created_at        | Creation timestamp        |
-| updated_at        | Last update timestamp     |
 
 ---
 
@@ -225,15 +224,14 @@ Stores club identity tags.
 
 ## Columns
 
-| Column        | Description           |
-| ------------- | --------------------- |
-| id            | Tag identifier        |
-| club_id       | Club identifier       |
-| tag_name      | Tag name              |
-| tag_type      | Tag category          |
-| display_order | Display order         |
-| created_at    | Creation timestamp    |
-| updated_at    | Last update timestamp |
+| Column        | Description     |
+| ------------- | --------------- |
+| id            | Tag identifier  |
+| club_id       | Club identifier |
+| tag_name      | Tag name        |
+| tag_type      | Tag category    |
+| display_order | Display order   |
+| is_active     | Active Flag     |
 
 ---
 
@@ -260,8 +258,6 @@ Stores recommendation results.
 | reason_summary       | Recommendation summary       |
 | explanation_json     | Detailed explanation payload |
 | explanation_version  | Explanation version          |
-| created_at           | Creation timestamp           |
-| updated_at           | Last update timestamp        |
 
 ---
 
@@ -281,7 +277,6 @@ Stores AI refinement history.
 | answer          | User answer              |
 | adjustment_json | Score adjustment data    |
 | model_name      | AI model name            |
-| created_at      | Creation timestamp       |
 
 ---
 

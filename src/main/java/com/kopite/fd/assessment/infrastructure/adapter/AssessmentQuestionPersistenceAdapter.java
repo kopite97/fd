@@ -5,20 +5,20 @@ import com.kopite.fd.assessment.domain.repository.AssessmentQuestionRepository;
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentQuestionJpaEntity;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentQuestionJpaRepository;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class AssessmentQuestionPersistenceAdapter implements AssessmentQuestionRepository {
 
     private final AssessmentQuestionJpaRepository assessmentQuestionJpaRepository;
 
-    public AssessmentQuestionPersistenceAdapter(AssessmentQuestionJpaRepository assessmentQuestionJpaRepository) {
-        this.assessmentQuestionJpaRepository = assessmentQuestionJpaRepository;
-    }
-
     @Override
     public List<AssessmentQuestion> findActiveByQuestionVersion(String questionVersion) {
-        return assessmentQuestionJpaRepository.findByQuestionVersionAndActiveTrueOrderByDisplayOrderAsc(questionVersion)
+        return assessmentQuestionJpaRepository.findByQuestionVersionAndActiveTrueOrderByDisplayOrderAsc(
+                        Integer.valueOf(questionVersion)
+                )
                 .stream()
                 .map(AssessmentQuestionJpaEntity::toDomain)
                 .toList();

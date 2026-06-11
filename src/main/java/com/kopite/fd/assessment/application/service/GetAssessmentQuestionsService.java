@@ -11,25 +11,17 @@ import com.kopite.fd.assessment.domain.repository.AssessmentRepository;
 import com.kopite.fd.assessment.domain.type.AssessmentStatus;
 import java.util.List;
 import java.util.Map;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class GetAssessmentQuestionsService {
 
     private final AssessmentRepository assessmentRepository;
     private final AssessmentQuestionRepository assessmentQuestionRepository;
     private final AssessmentQuestionOptionRepository assessmentQuestionOptionRepository;
-
-    public GetAssessmentQuestionsService(
-            AssessmentRepository assessmentRepository,
-            AssessmentQuestionRepository assessmentQuestionRepository,
-            AssessmentQuestionOptionRepository assessmentQuestionOptionRepository
-    ) {
-        this.assessmentRepository = assessmentRepository;
-        this.assessmentQuestionRepository = assessmentQuestionRepository;
-        this.assessmentQuestionOptionRepository = assessmentQuestionOptionRepository;
-    }
 
     @Transactional(readOnly = true)
     public GetAssessmentQuestionsResult getQuestions(GetAssessmentQuestionsQuery query) {

@@ -16,28 +16,18 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class CompleteAssessmentService {
 
     private final AssessmentRepository assessmentRepository;
     private final AssessmentAnswerRepository assessmentAnswerRepository;
     private final OptionScoreMappingRepository optionScoreMappingRepository;
     private final AssessmentDnaScoreRepository assessmentDnaScoreRepository;
-
-    public CompleteAssessmentService(
-            AssessmentRepository assessmentRepository,
-            AssessmentAnswerRepository assessmentAnswerRepository,
-            OptionScoreMappingRepository optionScoreMappingRepository,
-            AssessmentDnaScoreRepository assessmentDnaScoreRepository
-    ) {
-        this.assessmentRepository = assessmentRepository;
-        this.assessmentAnswerRepository = assessmentAnswerRepository;
-        this.optionScoreMappingRepository = optionScoreMappingRepository;
-        this.assessmentDnaScoreRepository = assessmentDnaScoreRepository;
-    }
 
     @Transactional
     public CompleteAssessmentResult complete(CompleteAssessmentCommand command) {

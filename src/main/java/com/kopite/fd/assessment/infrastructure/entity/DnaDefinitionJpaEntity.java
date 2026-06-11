@@ -1,38 +1,41 @@
 package com.kopite.fd.assessment.infrastructure.entity;
 
 import com.kopite.fd.assessment.domain.model.DnaDefinition;
+import com.kopite.fd.global.infrastructure.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+@Getter
 @Entity
 @Table(name = "dna_definitions")
-public class DnaDefinitionJpaEntity {
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+public class DnaDefinitionJpaEntity extends BaseEntity {
 
     @Id
     private Long id;
 
-    @Column(name = "dna_category", nullable = false)
+    @Column(name = "dna_category", length = 20, nullable = false)
     private String dnaCategory;
 
-    @Column(name = "dna_key", nullable = false)
+    @Column(name = "dna_key", length = 50, nullable = false)
     private String dnaKey;
 
-    @Column(name = "display_name", nullable = false)
+    @Column(name = "display_name", length = 50, nullable = false)
     private String displayName;
 
-    @Column
+    @Column(name = "description", nullable = true)
     private String description;
 
-    @Column(name = "display_order")
+    @Column(name = "display_order", nullable = false)
     private Integer displayOrder;
 
-    @Column(name = "is_active")
+    @Column(name = "is_active", nullable = false)
     private Boolean active;
-
-    protected DnaDefinitionJpaEntity() {
-    }
 
     public DnaDefinition toDomain() {
         return new DnaDefinition(

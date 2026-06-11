@@ -5,16 +5,14 @@ import com.kopite.fd.assessment.domain.repository.DnaDefinitionRepository;
 import com.kopite.fd.assessment.infrastructure.entity.DnaDefinitionJpaEntity;
 import com.kopite.fd.assessment.infrastructure.repository.DnaDefinitionJpaRepository;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@RequiredArgsConstructor
 public class DnaDefinitionPersistenceAdapter implements DnaDefinitionRepository {
 
     private final DnaDefinitionJpaRepository dnaDefinitionJpaRepository;
-
-    public DnaDefinitionPersistenceAdapter(DnaDefinitionJpaRepository dnaDefinitionJpaRepository) {
-        this.dnaDefinitionJpaRepository = dnaDefinitionJpaRepository;
-    }
 
     @Override
     public List<DnaDefinition> findActiveDefinitions() {

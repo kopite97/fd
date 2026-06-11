@@ -20,6 +20,7 @@ import com.kopite.fd.assessment.dto.response.GetAssessmentQuestionsResponse;
 import com.kopite.fd.assessment.dto.response.StartAssessmentResponse;
 import com.kopite.fd.assessment.dto.response.SubmitAssessmentAnswerResponse;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,24 +30,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/assessments")
+@RequiredArgsConstructor
 public class AssessmentController {
 
     private final StartAssessmentService startAssessmentService;
     private final GetAssessmentQuestionsService getAssessmentQuestionsService;
     private final SubmitAssessmentAnswerService submitAssessmentAnswerService;
     private final CompleteAssessmentService completeAssessmentService;
-
-    public AssessmentController(
-            StartAssessmentService startAssessmentService,
-            GetAssessmentQuestionsService getAssessmentQuestionsService,
-            SubmitAssessmentAnswerService submitAssessmentAnswerService,
-            CompleteAssessmentService completeAssessmentService
-    ) {
-        this.startAssessmentService = startAssessmentService;
-        this.getAssessmentQuestionsService = getAssessmentQuestionsService;
-        this.submitAssessmentAnswerService = submitAssessmentAnswerService;
-        this.completeAssessmentService = completeAssessmentService;
-    }
 
     @PostMapping
     public StartAssessmentResponse startAssessment(@Valid @RequestBody StartAssessmentRequest request) {
