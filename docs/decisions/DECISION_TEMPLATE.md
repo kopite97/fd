@@ -2,13 +2,22 @@
 
 ## Metadata
 
-| Field       | Value                                       |
-| ----------- | ------------------------------------------- |
-| Decision ID | DECISION-XXXX                               |
-| Title       |                                             |
-| Status      | Proposed / Accepted / Rejected / Superseded |
-| Created At  | YYYY-MM-DD                                  |
-| Updated At  | YYYY-MM-DD                                  |
+| Field         | Value                                       |
+|---------------|---------------------------------------------|
+| Decision ID   | DECISION-XXXX                               |
+| Title         |                                             |
+| Status        | Proposed / Accepted / Rejected / Superseded |
+| Superseded By | DECISION-YYYY / PLAN-YYYY  (Optional)       |
+| Created At    | YYYY-MM-DD                                  |
+| Updated At    | YYYY-MM-DD                                  |
+
+When a Decision status is changed to `Superseded`:
+
+* `Superseded By` must reference the replacing Decision.
+* The replacing Decision should reference the superseded Decision in its Context section.
+* A superseded Decision must remain in the repository for historical traceability.
+* Do not delete superseded Decisions.
+* The 'Superseded By' can contain DECISION or PLAN.
 
 ---
 

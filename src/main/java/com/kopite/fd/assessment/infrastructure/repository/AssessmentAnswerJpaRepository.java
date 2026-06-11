@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AssessmentAnswerJpaRepository extends JpaRepository<AssessmentAnswerJpaEntity, Long> {
 
-    List<AssessmentAnswerJpaEntity> findByAssessmentId(Long assessmentId);
+    List<AssessmentAnswerJpaEntity> findByAssessmentIdAndIsDeletedFalse(Long assessmentId);
 }

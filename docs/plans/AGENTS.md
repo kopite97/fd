@@ -259,6 +259,34 @@ Plan IDs must be unique.
 
 File names should remain stable after creation.
 
+### Plan Numbering
+
+Plan numbers must be assigned sequentially.
+
+When creating a new Plan:
+
+1. Find the highest existing Plan number.
+2. Use the next available number.
+3. Do not reuse numbers from deleted, cancelled, or completed Plans.
+4. Preserve chronological ordering of Plan creation.
+
+Examples:
+
+```text
+PLAN-0007-data-import.md
+PLAN-0008-club-domain.md
+PLAN-0009-recommendation-domain.md
+```
+
+If `PLAN-0009` is cancelled, the next Plan must still be:
+
+```text
+PLAN-0010-next-plan.md
+```
+
+Plan numbers represent creation order, not implementation order.
+
+
 ---
 
 ## Plan Structure

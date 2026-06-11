@@ -48,7 +48,7 @@ class CompleteAssessmentServiceTest {
     @Test
     void shouldCompleteAssessmentAndAggregateMinimumDnaScores() {
         Assessment assessment = new Assessment(
-                1L, null, "anon", AssessmentStatus.IN_PROGRESS, "v1", null, null,
+                1L, null, "anon", AssessmentStatus.IN_PROGRESS, "q-v1", null, null,
                 LocalDateTime.now(), null, LocalDateTime.now(), LocalDateTime.now()
         );
         when(assessmentRepository.findById(1L)).thenReturn(Optional.of(assessment));
@@ -87,7 +87,7 @@ class CompleteAssessmentServiceTest {
     @Test
     void shouldRejectCompletionForCompletedAssessment() {
         Assessment assessment = new Assessment(
-                1L, null, "anon", AssessmentStatus.COMPLETED, "v1", "alg-v1", null,
+                1L, null, "anon", AssessmentStatus.COMPLETED, "q-v1", "alg-v1", null,
                 LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now()
         );
         when(assessmentRepository.findById(1L)).thenReturn(Optional.of(assessment));

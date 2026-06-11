@@ -31,8 +31,8 @@ public class AssessmentQuestionJpaEntity extends BaseEntity {
     @Column(name = "display_order", nullable = false)
     private Integer displayOrder;
 
-    @Column(name = "question_version", nullable = false)
-    private Integer questionVersion;
+    @Column(name = "question_version", length = 20, nullable = false)
+    private String questionVersion;
 
     @Column(name = "is_active", nullable = false)
     private Boolean active;
@@ -44,7 +44,7 @@ public class AssessmentQuestionJpaEntity extends BaseEntity {
                 questionType,
                 primaryDnaDefinitionId,
                 displayOrder,
-                questionVersion == null ? null : String.valueOf(questionVersion)
+                questionVersion
         );
     }
 }

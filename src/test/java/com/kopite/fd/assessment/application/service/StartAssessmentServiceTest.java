@@ -48,7 +48,7 @@ class StartAssessmentServiceTest {
         });
 
         StartAssessmentResult result = startAssessmentService.start(
-                new StartAssessmentCommand(null, " anon-123 ", "v1")
+                new StartAssessmentCommand(null, " anon-123 ", "q-v1")
         );
 
         ArgumentCaptor<Assessment> captor = ArgumentCaptor.forClass(Assessment.class);
@@ -56,7 +56,7 @@ class StartAssessmentServiceTest {
         Assessment savedAssessment = captor.getValue();
 
         assertThat(savedAssessment.getStatus()).isEqualTo(AssessmentStatus.IN_PROGRESS);
-        assertThat(savedAssessment.getQuestionVersion()).isEqualTo("v1");
+        assertThat(savedAssessment.getQuestionVersion()).isEqualTo("q-v1");
         assertThat(savedAssessment.getAnonymousId()).isEqualTo("anon-123");
         assertThat(savedAssessment.getAlgorithmVersion()).isNull();
         assertThat(savedAssessment.getClubDataVersion()).isNull();
@@ -64,14 +64,14 @@ class StartAssessmentServiceTest {
 
         assertThat(result.assessmentId()).isEqualTo(1L);
         assertThat(result.status()).isEqualTo(AssessmentStatus.IN_PROGRESS);
-        assertThat(result.questionVersion()).isEqualTo("v1");
+        assertThat(result.questionVersion()).isEqualTo("q-v1");
         assertThat(result.anonymousId()).isEqualTo("anon-123");
     }
 
     @Test
     void shouldRejectWhenUserIdAndAnonymousIdAreMissing() {
         assertThatThrownBy(() -> startAssessmentService.start(
-                new StartAssessmentCommand(null, "  ", "v1")
+                new StartAssessmentCommand(null, "  ", "q-v1")
         )).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("At least one of userId or anonymousId must be present.");
     }

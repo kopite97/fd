@@ -7,7 +7,7 @@
 | Plan ID | PLAN-0003 |
 | Title | Football DNA Data Manual Import API |
 | Type | Feature |
-| Status | In Progress |
+| Status | Completed |
 | Created At | 2026-06-10 |
 | Updated At | 2026-06-10 |
 

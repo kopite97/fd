@@ -56,25 +56,25 @@ class AssessmentControllerTest {
     @Test
     void shouldDelegateStartAssessment() throws Exception {
         when(startAssessmentService.start(any())).thenReturn(new StartAssessmentResult(
-                1L, 1L, null, AssessmentStatus.IN_PROGRESS, "v1",
+                1L, 1L, null, AssessmentStatus.IN_PROGRESS, "q-v1",
                 LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now()
         ));
 
         mockMvc.perform(post("/api/assessments")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("""
-                                {"userId":1,"questionVersion":"v1"}
+                                {"userId":1,"questionVersion":"q-v1"}
                                 """))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.assessmentId").value(1))
-                .andExpect(jsonPath("$.questionVersion").value("v1"));
+                .andExpect(jsonPath("$.questionVersion").value("q-v1"));
     }
 
     @Test
     void shouldDelegateGetQuestions() throws Exception {
         when(getAssessmentQuestionsService.getQuestions(any())).thenReturn(new GetAssessmentQuestionsResult(
                 1L,
-                "v1",
+                "q-v1",
                 List.of(new GetAssessmentQuestionsResult.AssessmentQuestionItem(
                         10L, "Q1", "CHOICE", 100L, 1,
                         List.of(new GetAssessmentQuestionsResult.AssessmentQuestionOptionItem(1000L, "A", 1))

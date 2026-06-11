@@ -20,7 +20,8 @@ public class AssessmentQuestionOptionPersistenceAdapter implements AssessmentQue
             return List.of();
         }
 
-        return assessmentQuestionOptionJpaRepository.findByQuestionIdInAndActiveTrueOrderByQuestionIdAscDisplayOrderAsc(questionIds)
+        return assessmentQuestionOptionJpaRepository
+                .findByQuestionIdInAndActiveTrueAndIsDeletedFalseOrderByQuestionIdAscDisplayOrderAsc(questionIds)
                 .stream()
                 .map(AssessmentQuestionOptionJpaEntity::toDomain)
                 .toList();

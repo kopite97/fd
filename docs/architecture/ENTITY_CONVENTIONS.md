@@ -36,6 +36,32 @@ dto
 
 ---
 
+## BaseEntity
+
+All JPA entities inherit from BaseEntity.
+
+Location:
+
+```text
+global.infrastructure.entity.BaseEntity
+```
+
+BaseEntity provides:
+
+- createdAt
+- updatedAt
+- isDeleted
+
+Database mapping:
+
+- created_at
+- updated_at
+- is_deleted
+
+The default value of is_deleted is false.
+
+---
+
 ## Naming Conventions
 
 Entity class names must end with:
@@ -65,39 +91,6 @@ Example:
 @Entity
 @Table(name = "clubs")
 public class ClubJpaEntity
-{
-}
-```
-
----
-
-## Base Entity
-
-All JPA entities must inherit:
-
-```java
-BaseEntity
-```
-
-Location:
-
-```text
-global.infrastructure.entity.BaseEntity
-```
-
-BaseEntity owns:
-
-```java
-createdAt
-updatedAt
-```
-
-Individual entities must not redefine these fields.
-
-Example:
-
-```java
-public class ClubJpaEntity extends BaseEntity
 {
 }
 ```

@@ -22,7 +22,7 @@ public class AssessmentAnswerPersistenceAdapter implements AssessmentAnswerRepos
 
     @Override
     public List<AssessmentAnswer> findByAssessmentId(Long assessmentId) {
-        return assessmentAnswerJpaRepository.findByAssessmentId(assessmentId).stream()
+        return assessmentAnswerJpaRepository.findByAssessmentIdAndIsDeletedFalse(assessmentId).stream()
                 .map(AssessmentAnswerJpaEntity::toDomain)
                 .toList();
     }

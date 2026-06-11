@@ -27,7 +27,7 @@ public class AssessmentDnaScorePersistenceAdapter implements AssessmentDnaScoreR
 
     @Override
     public List<AssessmentDnaScore> findByAssessmentId(Long assessmentId) {
-        return assessmentDnaScoreJpaRepository.findByAssessmentId(assessmentId).stream()
+        return assessmentDnaScoreJpaRepository.findByAssessmentIdAndIsDeletedFalse(assessmentId).stream()
                 .map(AssessmentDnaScoreJpaEntity::toDomain)
                 .toList();
     }

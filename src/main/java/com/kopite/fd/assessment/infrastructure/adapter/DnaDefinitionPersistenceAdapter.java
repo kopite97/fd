@@ -16,7 +16,7 @@ public class DnaDefinitionPersistenceAdapter implements DnaDefinitionRepository 
 
     @Override
     public List<DnaDefinition> findActiveDefinitions() {
-        return dnaDefinitionJpaRepository.findByActiveTrueOrderByDisplayOrderAsc().stream()
+        return dnaDefinitionJpaRepository.findByActiveTrueAndIsDeletedFalseOrderByDisplayOrderAsc().stream()
                 .map(DnaDefinitionJpaEntity::toDomain)
                 .toList();
     }

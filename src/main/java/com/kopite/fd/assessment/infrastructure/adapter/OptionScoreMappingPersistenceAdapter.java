@@ -20,7 +20,7 @@ public class OptionScoreMappingPersistenceAdapter implements OptionScoreMappingR
             return List.of();
         }
 
-        return optionScoreMappingJpaRepository.findByOptionIdIn(optionIds).stream()
+        return optionScoreMappingJpaRepository.findByOptionIdInAndIsDeletedFalse(optionIds).stream()
                 .map(OptionScoreMappingJpaEntity::toDomain)
                 .toList();
     }

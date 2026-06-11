@@ -16,8 +16,8 @@ public class AssessmentQuestionPersistenceAdapter implements AssessmentQuestionR
 
     @Override
     public List<AssessmentQuestion> findActiveByQuestionVersion(String questionVersion) {
-        return assessmentQuestionJpaRepository.findByQuestionVersionAndActiveTrueOrderByDisplayOrderAsc(
-                        Integer.valueOf(questionVersion)
+        return assessmentQuestionJpaRepository.findByQuestionVersionAndActiveTrueAndIsDeletedFalseOrderByDisplayOrderAsc(
+                        questionVersion
                 )
                 .stream()
                 .map(AssessmentQuestionJpaEntity::toDomain)

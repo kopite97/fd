@@ -39,14 +39,14 @@ public class AssessmentJpaEntity extends BaseEntity {
     @Column(name = "status", length = 20, nullable = false)
     private AssessmentStatus status;
 
-    @Column(name = "question_version", nullable = false)
-    private Integer questionVersion;
+    @Column(name = "question_version", length = 20, nullable = false)
+    private String questionVersion;
 
-    @Column(name = "algorithm_version", nullable = true)
-    private Integer algorithmVersion;
+    @Column(name = "algorithm_version", length = 20, nullable = true)
+    private String algorithmVersion;
 
-    @Column(name = "club_data_version", nullable = true)
-    private Integer clubDataVersion;
+    @Column(name = "club_data_version", length = 20, nullable = true)
+    private String clubDataVersion;
 
     @Column(name = "started_at", nullable = false)
     private LocalDateTime startedAt;
@@ -60,15 +60,15 @@ public class AssessmentJpaEntity extends BaseEntity {
             String anonymousId,
             String publicResultKey,
             AssessmentStatus status,
-            Integer questionVersion,
-            Integer algorithmVersion,
-            Integer clubDataVersion,
+            String questionVersion,
+            String algorithmVersion,
+            String clubDataVersion,
             LocalDateTime startedAt,
             LocalDateTime completedAt,
             LocalDateTime createdAt,
             LocalDateTime updatedAt
     ) {
-        super(createdAt, updatedAt);
+        super(createdAt, updatedAt, false);
         this.id = id;
         this.userId = userId;
         this.anonymousId = anonymousId;
@@ -88,9 +88,9 @@ public class AssessmentJpaEntity extends BaseEntity {
                 assessment.getAnonymousId(),
                 null,
                 assessment.getStatus(),
-                toInteger(assessment.getQuestionVersion()),
-                toInteger(assessment.getAlgorithmVersion()),
-                toInteger(assessment.getClubDataVersion()),
+                assessment.getQuestionVersion(),
+                assessment.getAlgorithmVersion(),
+                assessment.getClubDataVersion(),
                 assessment.getStartedAt(),
                 assessment.getCompletedAt(),
                 assessment.getCreatedAt(),
@@ -104,29 +104,13 @@ public class AssessmentJpaEntity extends BaseEntity {
                 userId,
                 anonymousId,
                 status,
-                toStringValue(questionVersion),
-                toStringValue(algorithmVersion),
-                toStringValue(clubDataVersion),
+                questionVersion,
+                algorithmVersion,
+                clubDataVersion,
                 startedAt,
                 completedAt,
                 getCreatedAt(),
                 getUpdatedAt()
         );
-    }
-
-    private static Integer toInteger(String value) {
-        if (value == null || value.isBlank()) {
-            return null;
-        }
-
-        return Integer.valueOf(value);
-    }
-
-    private static String toStringValue(Integer value) {
-        if (value == null) {
-            return null;
-        }
-
-        return String.valueOf(value);
     }
 }

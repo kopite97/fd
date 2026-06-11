@@ -41,7 +41,7 @@ public class AssessmentDnaScoreJpaEntity extends BaseEntity {
             LocalDateTime createdAt,
             LocalDateTime updatedAt
     ) {
-        super(createdAt, updatedAt);
+        super(createdAt, updatedAt, false);
         this.id = id;
         this.assessmentId = assessmentId;
         this.dnaDefinitionId = dnaDefinitionId;

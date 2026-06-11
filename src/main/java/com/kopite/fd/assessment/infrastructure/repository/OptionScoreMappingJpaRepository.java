@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OptionScoreMappingJpaRepository extends JpaRepository<OptionScoreMappingJpaEntity, Long> {
 
-    List<OptionScoreMappingJpaEntity> findByOptionIdIn(List<Long> optionIds);
+    List<OptionScoreMappingJpaEntity> findByOptionIdInAndIsDeletedFalse(List<Long> optionIds);
 }

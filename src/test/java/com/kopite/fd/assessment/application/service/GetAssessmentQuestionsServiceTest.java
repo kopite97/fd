@@ -41,12 +41,12 @@ class GetAssessmentQuestionsServiceTest {
     @Test
     void shouldReturnQuestionsUsingFrozenQuestionVersionForInProgressAssessment() {
         Assessment assessment = new Assessment(
-                1L, null, "anon", AssessmentStatus.IN_PROGRESS, "v2", null, null,
+                1L, null, "anon", AssessmentStatus.IN_PROGRESS, "q-v2", null, null,
                 LocalDateTime.now(), null, LocalDateTime.now(), LocalDateTime.now()
         );
         when(assessmentRepository.findById(1L)).thenReturn(Optional.of(assessment));
-        when(assessmentQuestionRepository.findActiveByQuestionVersion("v2")).thenReturn(List.of(
-                new AssessmentQuestion(10L, "Q1", "CHOICE", 100L, 1, "v2")
+        when(assessmentQuestionRepository.findActiveByQuestionVersion("q-v2")).thenReturn(List.of(
+                new AssessmentQuestion(10L, "Q1", "CHOICE", 100L, 1, "q-v2")
         ));
         when(assessmentQuestionOptionRepository.findActiveByQuestionIds(List.of(10L))).thenReturn(List.of(
                 new AssessmentQuestionOption(1000L, 10L, "A", 1),
@@ -57,8 +57,8 @@ class GetAssessmentQuestionsServiceTest {
                 new GetAssessmentQuestionsQuery(1L)
         );
 
-        verify(assessmentQuestionRepository).findActiveByQuestionVersion("v2");
-        assertThat(result.questionVersion()).isEqualTo("v2");
+        verify(assessmentQuestionRepository).findActiveByQuestionVersion("q-v2");
+        assertThat(result.questionVersion()).isEqualTo("q-v2");
         assertThat(result.questions()).hasSize(1);
         assertThat(result.questions().get(0).options()).hasSize(2);
     }
@@ -66,7 +66,7 @@ class GetAssessmentQuestionsServiceTest {
     @Test
     void shouldRejectWhenAssessmentIsCompleted() {
         Assessment assessment = new Assessment(
-                1L, null, "anon", AssessmentStatus.COMPLETED, "v2", "alg-1", null,
+                1L, null, "anon", AssessmentStatus.COMPLETED, "q-v2", "alg-v1", null,
                 LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now()
         );
         when(assessmentRepository.findById(1L)).thenReturn(Optional.of(assessment));

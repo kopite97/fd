@@ -22,7 +22,7 @@ public class AssessmentPersistenceAdapter implements AssessmentRepository {
 
     @Override
     public Optional<Assessment> findById(Long assessmentId) {
-        return assessmentJpaRepository.findById(assessmentId)
+        return assessmentJpaRepository.findByIdAndIsDeletedFalse(assessmentId)
                 .map(AssessmentJpaEntity::toDomain);
     }
 }

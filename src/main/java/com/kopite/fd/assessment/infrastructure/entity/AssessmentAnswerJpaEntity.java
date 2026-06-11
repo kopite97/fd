@@ -47,7 +47,7 @@ public class AssessmentAnswerJpaEntity extends BaseEntity {
             String scoreSnapshotJson,
             LocalDateTime createdAt
     ) {
-        super(createdAt, createdAt);
+        super(createdAt, createdAt, false);
         this.id = id;
         this.assessmentId = assessmentId;
         this.questionId = questionId;

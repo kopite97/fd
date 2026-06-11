@@ -2,13 +2,14 @@
 
 ## Metadata
 
-| Field | Value |
-| --- | --- |
-| Decision ID | DECISION-0002 |
-| Title | Football DNA Data Manual Import Transport and Preservation |
-| Status | Accepted |
-| Created At | 2026-06-10 |
-| Updated At | 2026-06-10 |
+| Field         | Value                                              |
+|---------------|----------------------------------------------------|
+| Decision ID   | DECISION-0002                                      |
+| Title         | Football DNA Data Manual Import Transport and Preservation |
+| Status        | Superseded                                         |
+| Superseded By | DECISION-0003                                      |
+| Created At    | 2026-06-10                                         |
+| Updated At    | 2026-06-11                                         |
 
 ---
 
@@ -162,3 +163,8 @@ Negative:
 
 * Decision approved by user
 * Status set to Accepted
+
+### 2026-06-11
+
+* Decision status changed to Superseded
+* Superseded by `DECISION-0003`
