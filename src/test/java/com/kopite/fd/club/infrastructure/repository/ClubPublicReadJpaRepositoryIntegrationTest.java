@@ -34,7 +34,7 @@ class ClubPublicReadJpaRepositoryIntegrationTest {
         Long deletedClubId = insertClub("PUBD" + suffix, true, true);
 
         Page<ClubJpaEntity> result = clubJpaRepository.findByActiveTrueAndIsDeletedFalse(
-                PageRequest.of(0, 20, Sort.by(Sort.Direction.ASC, "id"))
+                PageRequest.of(0, 1000, Sort.by(Sort.Direction.ASC, "id"))
         );
 
         List<Long> resultIds = result.getContent().stream()

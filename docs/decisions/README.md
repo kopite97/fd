@@ -12,3 +12,4 @@
 | DECISION-0008 | Club DNA Score Aggregate and Query Policy | Accepted |
 | DECISION-0009 | Club Public Read API Policy | Accepted |
 | DECISION-0010 | DNA Definition Domain Ownership Policy | Accepted |
+| DECISION-0011 | Football DNA Data Normalized Synchronization Policy | Accepted |

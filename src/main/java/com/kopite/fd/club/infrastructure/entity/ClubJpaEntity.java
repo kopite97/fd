@@ -113,6 +113,62 @@ public class ClubJpaEntity extends BaseEntity {
         );
     }
 
+    public static ClubJpaEntity createForSync(
+            String name,
+            String shortName,
+            String code,
+            String league,
+            String country,
+            String competitionTier,
+            String trendDirection,
+            BigDecimal beginnerAccessibility,
+            Boolean active
+    ) {
+        LocalDateTime now = LocalDateTime.now();
+        return new ClubJpaEntity(
+                null,
+                name,
+                shortName,
+                code,
+                league,
+                country,
+                competitionTier,
+                trendDirection,
+                beginnerAccessibility,
+                active,
+                null,
+                null,
+                null,
+                now,
+                now
+        );
+    }
+
+    public void updateFromSync(
+            String name,
+            String shortName,
+            String league,
+            String country,
+            String competitionTier,
+            String trendDirection,
+            BigDecimal beginnerAccessibility,
+            Boolean active
+    ) {
+        this.name = name;
+        this.shortName = shortName;
+        this.league = league;
+        this.country = country;
+        this.competitionTier = competitionTier;
+        this.trendDirection = trendDirection;
+        this.beginnerAccessibility = beginnerAccessibility;
+        this.active = active;
+        restore();
+    }
+
+    public void markSoftDeleted() {
+        markDeleted();
+    }
+
     public Club toDomain() {
         return new Club(
                 id,

@@ -44,3 +44,8 @@ google:
     club-status-url: ${CLUBSTATUS_URL}
     club-tags-url: ${CLUBTAGS_URL}
     dna-rubric-url: ${DNARUBRIC_URL}
+
+admin:
+  football-dna-data:
+    sync:
+      token: ${ADMIN_FOOTBALL_DNA_SYNC_TOKEN:}

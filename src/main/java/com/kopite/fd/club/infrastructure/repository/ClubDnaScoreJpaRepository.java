@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface ClubDnaScoreJpaRepository extends JpaRepository<ClubDnaScoreJpaEntity, Long> {
 
+    boolean existsByDataVersion(String dataVersion);
+
     @Query(value = """
             SELECT
                 cds.id AS id,

@@ -18,3 +18,4 @@
 | PLAN-0014 | Club DNA Scores Domain and Query API | Completed |
 | PLAN-0015 | Club Public Read API | Completed |
 | PLAN-0016 | DNA Definitions Domain Migration | Completed |
+| PLAN-0017 | Football DNA Data Normalized Synchronization | Completed |

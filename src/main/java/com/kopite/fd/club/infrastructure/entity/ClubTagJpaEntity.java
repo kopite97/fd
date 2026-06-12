@@ -70,6 +70,37 @@ public class ClubTagJpaEntity extends BaseEntity {
         );
     }
 
+    public static ClubTagJpaEntity createForSync(
+            Long clubId,
+            String tagName,
+            String tagType,
+            Integer displayOrder,
+            Boolean active
+    ) {
+        LocalDateTime now = LocalDateTime.now();
+        return new ClubTagJpaEntity(
+                null,
+                clubId,
+                tagName,
+                tagType,
+                displayOrder,
+                active,
+                now,
+                now
+        );
+    }
+
+    public void updateFromSync(String tagType, Integer displayOrder, Boolean active) {
+        this.tagType = tagType;
+        this.displayOrder = displayOrder;
+        this.active = active;
+        restore();
+    }
+
+    public void markSoftDeleted() {
+        markDeleted();
+    }
+
     public ClubTag toDomain() {
         return new ClubTag(
                 id,

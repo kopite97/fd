@@ -9,7 +9,11 @@ import com.kopite.fd.assessment.domain.repository.OptionScoreMappingRepository;
 import com.kopite.fd.club.domain.repository.ClubDnaScoreRepository;
 import com.kopite.fd.club.domain.repository.ClubRepository;
 import com.kopite.fd.club.domain.repository.ClubTagRepository;
+import com.kopite.fd.club.infrastructure.repository.ClubDnaScoreJpaRepository;
+import com.kopite.fd.club.infrastructure.repository.ClubJpaRepository;
+import com.kopite.fd.club.infrastructure.repository.ClubTagJpaRepository;
 import com.kopite.fd.dna.domain.repository.DnaDefinitionRepository;
+import com.kopite.fd.dna.infrastructure.repository.DnaDefinitionJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -50,6 +54,18 @@ class FdApplicationTests {
 
     @MockitoBean
     private ClubDnaScoreRepository clubDnaScoreRepository;
+
+    @MockitoBean
+    private ClubJpaRepository clubJpaRepository;
+
+    @MockitoBean
+    private ClubTagJpaRepository clubTagJpaRepository;
+
+    @MockitoBean
+    private ClubDnaScoreJpaRepository clubDnaScoreJpaRepository;
+
+    @MockitoBean
+    private DnaDefinitionJpaRepository dnaDefinitionJpaRepository;
 
     @Test
     void contextLoads() {

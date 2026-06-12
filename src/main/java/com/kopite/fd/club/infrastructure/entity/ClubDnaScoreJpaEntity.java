@@ -71,6 +71,26 @@ public class ClubDnaScoreJpaEntity extends BaseEntity {
         );
     }
 
+    public static ClubDnaScoreJpaEntity createForSync(
+            Long clubId,
+            Long dnaDefinitionId,
+            BigDecimal score,
+            Boolean core,
+            String dataVersion
+    ) {
+        LocalDateTime now = LocalDateTime.now();
+        return new ClubDnaScoreJpaEntity(
+                null,
+                clubId,
+                dnaDefinitionId,
+                score,
+                core,
+                dataVersion,
+                now,
+                now
+        );
+    }
+
     public ClubDnaScore toDomain() {
         return new ClubDnaScore(
                 id,
