@@ -323,6 +323,26 @@ The Runtime Verification section should describe:
 * What outputs or side effects will be verified
 * How the verification result will be recorded
 
+### Runtime Execution Requirement
+
+When Runtime Verification is required, the agent must verify behavior using a running application whenever the execution environment permits.
+
+Examples:
+
+* Start the application.
+* Execute the implemented API.
+* Verify the response.
+* Verify relevant database state changes.
+* Verify expected side effects.
+
+Unit tests and integration tests alone do not satisfy Runtime Verification when the behavior can be validated through a running application.
+
+If the application cannot be started due to environment limitations:
+
+* The Plan must remain In Progress.
+* The missing runtime verification must be documented.
+
+
 ---
 
 ## Plan Types

@@ -14,3 +14,5 @@
 | PLAN-0010 | String-Based Version Identifier Policy Alignment Fix | Completed |
 | PLAN-0011 | Football DNA Data Sheet-to-Schema Synchronization Mapping | Completed |
 | PLAN-0012 | Club Domain Initial Clubs Implementation | Completed |
+| PLAN-0013 | Club Tags Domain and Query API | Completed |
+| PLAN-0014 | Club DNA Scores Domain and Query API | Completed |

@@ -8,3 +8,5 @@
 | DECISION-0004 | JPA Entity Base Structure and Type Alignment | Accepted |
 | DECISION-0005 | BaseEntity Soft Delete Common Policy | Accepted |
 | DECISION-0006 | String-Based Version Identifier Policy | Accepted |
+| DECISION-0007 | Club Tag Aggregate and Relationship Policy | Accepted |
+| DECISION-0008 | Club DNA Score Aggregate and Query Policy | Accepted |
