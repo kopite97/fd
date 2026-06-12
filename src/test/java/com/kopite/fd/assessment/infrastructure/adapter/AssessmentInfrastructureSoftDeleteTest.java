@@ -9,7 +9,6 @@ import com.kopite.fd.assessment.domain.model.AssessmentAnswer;
 import com.kopite.fd.assessment.domain.model.AssessmentDnaScore;
 import com.kopite.fd.assessment.domain.model.AssessmentQuestion;
 import com.kopite.fd.assessment.domain.model.AssessmentQuestionOption;
-import com.kopite.fd.assessment.domain.model.DnaDefinition;
 import com.kopite.fd.assessment.domain.model.OptionScoreMapping;
 import com.kopite.fd.assessment.domain.type.AssessmentStatus;
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentAnswerJpaEntity;
@@ -17,14 +16,12 @@ import com.kopite.fd.assessment.infrastructure.entity.AssessmentDnaScoreJpaEntit
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentJpaEntity;
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentQuestionJpaEntity;
 import com.kopite.fd.assessment.infrastructure.entity.AssessmentQuestionOptionJpaEntity;
-import com.kopite.fd.assessment.infrastructure.entity.DnaDefinitionJpaEntity;
 import com.kopite.fd.assessment.infrastructure.entity.OptionScoreMappingJpaEntity;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentAnswerJpaRepository;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentDnaScoreJpaRepository;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentJpaRepository;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentQuestionJpaRepository;
 import com.kopite.fd.assessment.infrastructure.repository.AssessmentQuestionOptionJpaRepository;
-import com.kopite.fd.assessment.infrastructure.repository.DnaDefinitionJpaRepository;
 import com.kopite.fd.assessment.infrastructure.repository.OptionScoreMappingJpaRepository;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -54,9 +51,6 @@ class AssessmentInfrastructureSoftDeleteTest {
     private AssessmentQuestionOptionJpaRepository assessmentQuestionOptionJpaRepository;
 
     @Mock
-    private DnaDefinitionJpaRepository dnaDefinitionJpaRepository;
-
-    @Mock
     private OptionScoreMappingJpaRepository optionScoreMappingJpaRepository;
 
     @InjectMocks
@@ -73,9 +67,6 @@ class AssessmentInfrastructureSoftDeleteTest {
 
     @InjectMocks
     private AssessmentQuestionOptionPersistenceAdapter assessmentQuestionOptionPersistenceAdapter;
-
-    @InjectMocks
-    private DnaDefinitionPersistenceAdapter dnaDefinitionPersistenceAdapter;
 
     @InjectMocks
     private OptionScoreMappingPersistenceAdapter optionScoreMappingPersistenceAdapter;
@@ -228,20 +219,6 @@ class AssessmentInfrastructureSoftDeleteTest {
         assertThat(result).containsExactly(option);
         verify(assessmentQuestionOptionJpaRepository)
                 .findByQuestionIdInAndActiveTrueAndIsDeletedFalseOrderByQuestionIdAscDisplayOrderAsc(questionIds);
-    }
-
-    @Test
-    void shouldFindActiveDnaDefinitionsUsingNonDeletedScope() {
-        DnaDefinitionJpaEntity dnaDefinitionJpaEntity = org.mockito.Mockito.mock(DnaDefinitionJpaEntity.class);
-        DnaDefinition dnaDefinition = new DnaDefinition(1L, "EMOTIONAL", "club_prestige", "Prestige", null, 1);
-        when(dnaDefinitionJpaRepository.findByActiveTrueAndIsDeletedFalseOrderByDisplayOrderAsc())
-                .thenReturn(List.of(dnaDefinitionJpaEntity));
-        when(dnaDefinitionJpaEntity.toDomain()).thenReturn(dnaDefinition);
-
-        List<DnaDefinition> result = dnaDefinitionPersistenceAdapter.findActiveDefinitions();
-
-        assertThat(result).containsExactly(dnaDefinition);
-        verify(dnaDefinitionJpaRepository).findByActiveTrueAndIsDeletedFalseOrderByDisplayOrderAsc();
     }
 
     @Test

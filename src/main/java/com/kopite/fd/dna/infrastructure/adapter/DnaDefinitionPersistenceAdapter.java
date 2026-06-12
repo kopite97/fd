@@ -1,9 +1,9 @@
-package com.kopite.fd.assessment.infrastructure.adapter;
+package com.kopite.fd.dna.infrastructure.adapter;
 
-import com.kopite.fd.assessment.domain.model.DnaDefinition;
-import com.kopite.fd.assessment.domain.repository.DnaDefinitionRepository;
-import com.kopite.fd.assessment.infrastructure.entity.DnaDefinitionJpaEntity;
-import com.kopite.fd.assessment.infrastructure.repository.DnaDefinitionJpaRepository;
+import com.kopite.fd.dna.domain.model.DnaDefinition;
+import com.kopite.fd.dna.domain.repository.DnaDefinitionRepository;
+import com.kopite.fd.dna.infrastructure.entity.DnaDefinitionJpaEntity;
+import com.kopite.fd.dna.infrastructure.repository.DnaDefinitionJpaRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

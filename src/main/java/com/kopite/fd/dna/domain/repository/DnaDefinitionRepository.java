@@ -1,6 +1,6 @@
-package com.kopite.fd.assessment.domain.repository;
+package com.kopite.fd.dna.domain.repository;
 
-import com.kopite.fd.assessment.domain.model.DnaDefinition;
+import com.kopite.fd.dna.domain.model.DnaDefinition;
 import java.util.List;
 
 public interface DnaDefinitionRepository {

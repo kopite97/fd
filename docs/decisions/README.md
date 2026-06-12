@@ -10,3 +10,5 @@
 | DECISION-0006 | String-Based Version Identifier Policy | Accepted |
 | DECISION-0007 | Club Tag Aggregate and Relationship Policy | Accepted |
 | DECISION-0008 | Club DNA Score Aggregate and Query Policy | Accepted |
+| DECISION-0009 | Club Public Read API Policy | Accepted |
+| DECISION-0010 | DNA Definition Domain Ownership Policy | Accepted |

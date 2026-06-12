@@ -1,6 +1,6 @@
-package com.kopite.fd.assessment.infrastructure.entity;
+package com.kopite.fd.dna.infrastructure.entity;
 
-import com.kopite.fd.assessment.domain.model.DnaDefinition;
+import com.kopite.fd.dna.domain.model.DnaDefinition;
 import com.kopite.fd.global.infrastructure.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

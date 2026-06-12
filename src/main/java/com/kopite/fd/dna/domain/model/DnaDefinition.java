@@ -1,4 +1,4 @@
-package com.kopite.fd.assessment.domain.model;
+package com.kopite.fd.dna.domain.model;
 
 public class DnaDefinition {
 

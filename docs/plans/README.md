@@ -16,3 +16,5 @@
 | PLAN-0012 | Club Domain Initial Clubs Implementation | Completed |
 | PLAN-0013 | Club Tags Domain and Query API | Completed |
 | PLAN-0014 | Club DNA Scores Domain and Query API | Completed |
+| PLAN-0015 | Club Public Read API | Completed |
+| PLAN-0016 | DNA Definitions Domain Migration | Completed |

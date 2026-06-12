@@ -1,6 +1,6 @@
-package com.kopite.fd.assessment.infrastructure.repository;
+package com.kopite.fd.dna.infrastructure.repository;
 
-import com.kopite.fd.assessment.infrastructure.entity.DnaDefinitionJpaEntity;
+import com.kopite.fd.dna.infrastructure.entity.DnaDefinitionJpaEntity;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
